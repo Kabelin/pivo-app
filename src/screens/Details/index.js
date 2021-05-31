@@ -5,7 +5,7 @@ import {
   Container,
   Progress,
   DetailsContainer,
-  InfoColumn,
+  InfoCell,
   Info,
   PassedProgress,
   Hour,
@@ -13,6 +13,7 @@ import {
   SwitchContainer,
   SwitchHint,
 } from './styles';
+import {Background} from '../../styles';
 
 const Details = () => {
   const data = [
@@ -61,37 +62,41 @@ const Details = () => {
   ];
 
   return (
-    <Container>
-      <SwitchContainer>
-        <SwitchHint>On</SwitchHint>
-        <Switch value disabled thumbColor="#7159c1" />
-      </SwitchContainer>
-      <ProgressCircle
-        style={{height: 200}}
-        progress={0.7}
-        progressColor="#7159c1"
-      />
-      <Progress>70%</Progress>
-      <DetailsContainer
-        data={data}
-        keyExtractor={(star) => String(star.id)}
-        renderItem={({item}) => (
-          <InfoColumn elevation={2}>
-            <Info>
-              <PassedProgress>Progresso: {item.progress}%</PassedProgress>
-              <Hour>
-                Horário: {`0${item.date.getUTCHours()}`.slice(-2)}:
-                {`0${item.date.getMinutes()}`.slice(-2)}
-              </Hour>
-            </Info>
-            <Info>
-              <Coordinates>Latitude: {item.latitude}</Coordinates>
-              <Coordinates>Longitude: {item.longitude}</Coordinates>
-            </Info>
-          </InfoColumn>
-        )}
-      />
-    </Container>
+    <Background>
+      <Container>
+        <SwitchContainer>
+          <SwitchHint>On</SwitchHint>
+          <Switch value disabled thumbColor="#54E346" trackColor="#C4C4C4" />
+        </SwitchContainer>
+        <ProgressCircle
+          style={{height: 200}}
+          progress={0.7}
+          strokeWidth={8}
+          backgroundColor="#C4C4C4"
+          progressColor="#54E346"
+        />
+        <Progress>70%</Progress>
+        <DetailsContainer
+          data={data}
+          keyExtractor={(star) => String(star.id)}
+          renderItem={({item}) => (
+            <InfoCell elevation={3}>
+              <Info>
+                <PassedProgress>Progresso: {item.progress}%</PassedProgress>
+                <Hour>
+                  Horário: {`0${item.date.getHours()}`.slice(-2)}:
+                  {`0${item.date.getMinutes()}`.slice(-2)}
+                </Hour>
+              </Info>
+              <Info>
+                <Coordinates>Latitude: {item.latitude}</Coordinates>
+                <Coordinates>Longitude: {item.longitude}</Coordinates>
+              </Info>
+            </InfoCell>
+          )}
+        />
+      </Container>
+    </Background>
   );
 };
 

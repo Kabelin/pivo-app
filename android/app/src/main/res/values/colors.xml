@@ -2,4 +2,5 @@
 
 <resources>
   <color name="primary">#fff</color>
+  <color name="dialogAccent">#54E346</color>
 </resources>
