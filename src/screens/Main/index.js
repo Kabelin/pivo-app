@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {Text, Platform} from 'react-native';
+import {Text, Platform, ActivityIndicator} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import PropTypes from 'prop-types';
 
@@ -20,6 +20,10 @@ import {Background} from '../../styles';
 const Monitoring = ({navigation}) => {
   const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [activationStatus, setActivationStatus] = useState(
+    'Ativar remotamente',
+  );
 
   const centerCoordinates = {
     latitude: -17.1761405,
@@ -58,6 +62,16 @@ const Monitoring = ({navigation}) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === 'ios');
     setDate(currentDate);
+  };
+
+  const remoteActivation = () => {
+    setLoading(true);
+    setTimeout(() => {
+      if (activationStatus === 'Ativar remotamente')
+        setActivationStatus('Desativar remotamente');
+      else setActivationStatus('Ativar remotamente');
+      setLoading(false);
+    }, 5000);
   };
 
   return (
@@ -125,18 +139,20 @@ const Monitoring = ({navigation}) => {
           </Text>
         </CustomButton>
         <CustomButton
-          onPress={() => {
-            navigation.navigate('ActivationModal');
-          }}
+          onPress={() => remoteActivation()}
           style={{marginTop: 10}}>
-          <Text
-            style={{
-              color: '#FFF',
-              fontSize: 16,
-              fontWeight: 'bold',
-            }}>
-            Ativação remota
-          </Text>
+          {loading ? (
+            <ActivityIndicator size={21} color="white" />
+          ) : (
+            <Text
+              style={{
+                color: '#FFF',
+                fontSize: 16,
+                fontWeight: 'bold',
+              }}>
+              {activationStatus}
+            </Text>
+          )}
         </CustomButton>
         {show && (
           <DateTimePicker
