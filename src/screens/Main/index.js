@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {Text, Platform, ActivityIndicator} from 'react-native';
+import {Text, Platform, ActivityIndicator, ToastAndroid} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import PropTypes from 'prop-types';
 
@@ -67,9 +67,13 @@ const Monitoring = ({navigation}) => {
   const remoteActivation = () => {
     setLoading(true);
     setTimeout(() => {
-      if (activationStatus === 'Ativar remotamente')
+      if (activationStatus === 'Ativar remotamente') {
+        ToastAndroid.show('Pivo ativado com sucesso!', ToastAndroid.SHORT);
         setActivationStatus('Desativar remotamente');
-      else setActivationStatus('Ativar remotamente');
+      } else {
+        ToastAndroid.show('Pivo desativado com sucesso!', ToastAndroid.SHORT);
+        setActivationStatus('Ativar remotamente');
+      }
       setLoading(false);
     }, 5000);
   };
