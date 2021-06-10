@@ -14,8 +14,4 @@ Clone or download the files from the repository and run `yarn` (or `npm install`
 
 ## Screenshots
 
-<img src="./screenshots/monitoring.png" alt="Monitoring" width="33%">
-<img src="./screenshots/calendar.png" alt="Calendar" width="33%">
-<img src="./screenshots/details.png" alt="Details" width="33%">
-<img src="./screenshots/fuel.png" alt="Fuel" width="33%">
-<img src="./screenshots/alerts.png" alt="Alerts" width="33%">
+<img src="./screenshots/monitoring.png" alt="Monitoring" width="30%"> <img src="./screenshots/calendar.png" alt="Calendar" width="30%"> <img src="./screenshots/details.png" alt="Details" width="30%"> <img src="./screenshots/fuel.png" alt="Fuel" width="30%"> <img src="./screenshots/alerts.png" alt="Alerts" width="30%">
