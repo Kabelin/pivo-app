@@ -26,8 +26,8 @@ import {Background} from '../../styles';
 //   },
 // ];
 
-// const values = [70, 30];
-const values = [30, 70];
+const values = [70, 30];
+// const values = [30, 70];
 const keys = ['full', 'empty'];
 const colors = ['#54e346', '#c4c4c4'];
 const data = keys.map((key, index) => {
